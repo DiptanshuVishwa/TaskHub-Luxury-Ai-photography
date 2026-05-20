@@ -1,0 +1,23 @@
+# Next.js / Node
+client/node_modules/
+client/.next/
+client/out/
+client/build/
+client/.env.local
+client/.env.production
+client/.env.development.local
+
+# Python / Flask
+server/venv/
+server/.env
+server/__pycache__/
+server/**/*.pyc
+server/.pytest_cache/
+server/celerybeat-schedule
+
+# System / IDEs
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.gemini/
