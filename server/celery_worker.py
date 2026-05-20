@@ -19,5 +19,10 @@ def make_celery(app_name=__name__):
 
 celery_app = make_celery()
 
-# Import tasks here to ensure they are registered
-import tasks.worker
+# Only import tasks if running inside the Celery worker daemon
+import sys
+is_celery = any('celery' in arg for arg in sys.argv) or (len(sys.argv) > 0 and 'celery' in sys.argv[0])
+
+if is_celery:
+    import tasks.worker
+

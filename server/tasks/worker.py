@@ -5,7 +5,10 @@ from celery_worker import celery_app
 from config import Config
 from db import supabase
 
-resend.api_key = Config.RESEND_API_KEY
+try:
+    resend.api_key = Config.RESEND_API_KEY
+except Exception as e:
+    print(f"Warning: Failed to set resend.api_key: {e}")
 
 @celery_app.task(bind=True)
 def generate_image_task(self, task_id, image_type, prompt, original_image_url, angle=None):
